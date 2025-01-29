@@ -25,11 +25,11 @@ class OzelSharedPreferences {
             sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
             return OzelSharedPreferences()
         }
-
-        fun zamaniKaydet(zaman :Long) {
-            sharedPreferences?.edit()?.putLong(TIME,zaman)?.apply()
-        }
-
-        fun zamaniAl() = sharedPreferences?.getLong(TIME,0)
     }
+
+    fun zamaniKaydet(zaman :Long) {
+        sharedPreferences?.edit()?.putLong(TIME,zaman)?.apply()
+    }
+
+    fun zamaniAl() = sharedPreferences?.getLong(TIME,0)
 }

@@ -18,5 +18,5 @@ interface BesinDAO {
     suspend fun getBesin(besinId : Int) : Besin
 
     @Query("delete from besin")
-    suspend fun delete(besin : Besin)
+    suspend fun deleteAllBesin()
 }
