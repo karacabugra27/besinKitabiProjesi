@@ -6,6 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.besinkitabiprojesi.databinding.FragmentBesinListeBinding
+import com.example.besinkitabiprojesi.service.BesinAPI
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class BesinListeFragment : Fragment() {
 
@@ -36,6 +43,19 @@ class BesinListeFragment : Fragment() {
 
         binding.swipeRefreshLayout.setOnRefreshListener {
 
+        }
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://raw.githubusercontent.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(BesinAPI::class.java)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val besinler = retrofit.getBesin()
+            besinler.forEach{
+                println(it.isim)
+            }
         }
     }
 
