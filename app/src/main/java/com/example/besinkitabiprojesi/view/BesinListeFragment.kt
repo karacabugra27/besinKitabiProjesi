@@ -45,18 +45,6 @@ class BesinListeFragment : Fragment() {
 
         }
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(BesinAPI::class.java)
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val besinler = retrofit.getBesin()
-            besinler.forEach{
-                println(it.isim)
-            }
-        }
     }
 
 }
