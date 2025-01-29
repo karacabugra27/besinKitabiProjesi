@@ -6,6 +6,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.besinkitabiprojesi.databinding.BesinRecyclerRowBinding
 import com.example.besinkitabiprojesi.model.Besin
+import com.example.besinkitabiprojesi.util.gorselIndir
+import com.example.besinkitabiprojesi.util.placeHolderYap
 import com.example.besinkitabiprojesi.view.BesinListeFragmentDirections
 
 class BesinRecyclerAdapter(val besinListesi : ArrayList<Besin>) : RecyclerView.Adapter<BesinRecyclerAdapter.BesinViewHolder>() {
@@ -31,6 +33,7 @@ class BesinRecyclerAdapter(val besinListesi : ArrayList<Besin>) : RecyclerView.A
     override fun onBindViewHolder(holder: BesinViewHolder, position: Int) {
         holder.binding.isim.text = besinListesi[position].isim
         holder.binding.kalori.text = besinListesi[position].kalori
+        holder.binding.imageView.gorselIndir(besinListesi[position].gorsel, placeHolderYap(holder.itemView.context))
 
         holder.itemView.setOnClickListener {
             val action = BesinListeFragmentDirections.actionBesinListeFragmentToBesinDetayFragment(besinListesi[position].uuid)
